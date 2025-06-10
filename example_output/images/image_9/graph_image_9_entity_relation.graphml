@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d2" for="node" attr.name="source_id" attr.type="string"/>
+<key id="d1" for="node" attr.name="description" attr.type="string"/>
+<key id="d0" for="node" attr.name="entity_type" attr.type="string"/>
+<graph edgedefault="undirected"><node id="&quot;IMAGE_9&quot;">
+  <data key="d0">"ORI_IMG"</data>
+  <data key="d1">"The image is a table titled 'Table 6: Experimental results for MRC task.' It presents the performance of various models on two tasks: MRPC (Microsoft Research Paraphrase Corpus) and QQP (Quora Question Pairs), measured using the F1 score. The table compares the performance of BERT and XLNet models, both in their base forms and when enhanced with different loss functions: FL (Focal Loss), DL (Distillation Loss), and DSC (the proposed method</data>
+  <data key="d2">./example_output/images/image_9.jpg</data>
+</node>
+</graph></graphml>

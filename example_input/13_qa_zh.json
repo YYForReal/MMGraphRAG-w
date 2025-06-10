@@ -1,0 +1,68 @@
+[
+  {
+    "question": "论文中如何提出计算加权交叉熵损失的系数α？",
+    "answer": "系数α通过公式lg((n-nt)/(nt+K))计算，其中nt表示类别t的样本数，n是训练集总样本数，K是需调节的超参数。",
+    "type": "text-only",
+    "evidence": "'本文使用lg((n-nt)/(nt+K))计算系数α...'"
+  },
+  {
+    "question": "命名实体识别任务使用的OntoNotes4.0数据集是中文还是英文？",
+    "answer": "中文。",
+    "type": "text-only",
+    "evidence": "文中明确指出'中文OntoNotes4.0是中文数据集'"
+  },
+  {
+    "question": "在QuoRef数据集上，相比基础XLNet模型，哪个变体模型取得了最大的F1分数提升？",
+    "answer": "XLNet+DSC模型在QuoRef数据集上相比基础XLNet模型取得+1.41的最大F1分数提升。",
+    "type": "multimodal-t",
+    "evidence": "表格显示改进值（括号内），基础XLNet模型与各变体模型的QuoRef分数对比表明XLNet+DSC提升最大"
+  },
+  {
+    "question": "根据表8，哪种数据增强方法使BERT模型的F1分数最高？",
+    "answer": "'+正负样本'数据增强方法使BERT模型获得93.14的最高F1分数。",
+    "type": "multimodal-t",
+    "evidence": "查看BERT行在不同数据增强方法中的表现，可直观确定最大值位置"
+  },
+  {
+    "question": "中文OntoNotes4.0数据集在表10中的最高F1分数是多少？",
+    "answer": "中文OntoNotes4.0数据集的最高F1分数为84.67。",
+    "type": "multimodal-t",
+    "evidence": "直接查看对应列的最大数值即可确定"
+  },
+  {
+    "question": "英文WSJ数据集中哪个模型获得最高F1分数？",
+    "answer": "BERT-Tagger+DSC模型以99.38的F1分数成为英文WSJ数据集最佳。",
+    "type": "multimodal-t",
+    "evidence": "对比英文WSJ部分的F1分数列数值即可得出结论"
+  },
+  {
+    "question": "BERT+DSC模型在MRPC任务中的性能提升幅度？",
+    "answer": "BERT+DSC在MRPC任务中实现了+0.92的性能提升。",
+    "type": "multimodal-t",
+    "evidence": "表7中MRPC列对应数值明确显示提升幅度"
+  },
+  {
+    "question": "BERT+DL与BERT+DSC在SST-5任务中的性能对比如何？",
+    "answer": "BERT+DL在SST-5任务中准确率54.63，低于BERT+DSC的55.19。",
+    "type": "multimodal-t",
+    "evidence": "直接比较两模型在SST-5列的准确率数值差异"
+  },
+  {
+    "question": "BERT+CE在SST-2任务中的准确率超过BERT+DL多少？",
+    "answer": "准确率超出0.53（94.90 vs 94.37）。",
+    "type": "multimodal-t",
+    "evidence": "通过简单减法计算得出差异值"
+  },
+  {
+    "question": "Quoref任务中负样本与正样本的比例是多少？",
+    "answer": "负正样本比例为169:1。",
+    "type": "multimodal-t",
+    "evidence": "表格中ratio列直接标注该数值"
+  },
+  {
+    "question": "论文使用什么公式计算加权交叉熵的α系数？",
+    "answer": "采用lg[(n-nt)/(nt+K)]公式，其中n为总样本数，nt为类别t样本数，K为可调参数。",
+    "type": "text-only",
+    "evidence": "文中明确说明：'我们使用lg((n-nt)/(nt+K))来计算α系数'"
+  }
+]
