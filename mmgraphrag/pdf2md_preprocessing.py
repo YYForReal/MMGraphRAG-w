@@ -261,10 +261,10 @@ def clear_images_in_md(content):
     content = re.sub(r'!\[\]\([^)]*\)', '', content)
     return content
 
-def image_move_remove(json_path, target_folder, folder_path):
-    # 加载 JSON 数据
-    with open(json_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+def image_move_remove(data, target_folder, folder_path):
+    # # 加载 JSON 数据
+    # with open(json_path, 'r', encoding='utf-8') as f:
+    #     data = json.load(f)
 
     # 计数器从1开始
     img_counter = 1
@@ -292,12 +292,13 @@ def image_move_remove(json_path, target_folder, folder_path):
                 print(f"Image not found: {original_img_path}")
 
 def get_content_list_json_file(folder_path):
-    # 遍历指定文件夹中的文件
     for file_name in os.listdir(folder_path):
-        # 仅选择以 "_content_list.json" 结尾的文件
         if file_name.endswith('_content_list.json'):
             file_path = os.path.join(folder_path, file_name)
-    return file_path
+    # 添加encoding参数
+    with open(file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    return data
 
 def rename_images_in_json(data):
     # 初始化计数器
@@ -360,6 +361,7 @@ async def extract_text_and_images_with_chunks(pdf_path, output_dir, context_leng
         raise ValueError("No unique .md file was found in the folder. Please ensure there is only one .md file in the folder.")
 
     markdown_file_path = os.path.join(folder_path, markdown_files[0])
+    print("ready to open ",markdown_file_path)
     with open(markdown_file_path, 'r', encoding='utf-8') as file:
         full_text = file.read()
     
@@ -381,12 +383,13 @@ async def extract_text_and_images_with_chunks(pdf_path, output_dir, context_leng
         os.makedirs(images_dir)
     
     # 读取json文件，按顺序重命名，并移动图片
-    json_file_path = get_content_list_json_file(folder_path)
-    image_move_remove(json_file_path, images_dir, folder_path)
-    
-    with open(json_file_path, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-    data = rename_images_in_json(data)
+    json_data = get_content_list_json_file(folder_path)
+    image_move_remove(json_data, images_dir, folder_path)
+
+    print("ready to open json",json_data)
+    # with open(json_file_path, 'r',encoding='utf-8') as file:
+    #     data = json.load(file)
+    data = rename_images_in_json(json_data)
 
     image_data = {}
     image_counter = 1

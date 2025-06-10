@@ -1,13 +1,23 @@
+# -*- coding: utf-8 -*-
+import sys
+import locale
+
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+
 from openai import AsyncOpenAI, OpenAI
 from parameter import EMBED_MODEL, encode, API_KEY, MODEL, URL, MM_API_KEY, MM_MODEL, MM_URL
 import numpy as np
 import re
 import json
 
+
 from base import wrap_embedding_func_with_attrs,compute_args_hash
 from storage import (
     BaseKVStorage,
 )
+
 
 @wrap_embedding_func_with_attrs(
     embedding_dim=EMBED_MODEL.get_sentence_embedding_dimension(),
@@ -52,6 +62,8 @@ async def model_if_cache(
 async def multimodel_if_cache(
     user_prompt, img_base, system_prompt, history_messages=[], **kwargs
 ) -> str:
+    print("MM_API_KEY:",MM_API_KEY)
+    print("MM_URL:",MM_URL)
     openai_async_client = AsyncOpenAI(
         api_key=MM_API_KEY, base_url=MM_URL
     )
@@ -81,6 +93,7 @@ async def multimodel_if_cache(
         if if_cache_return is not None:
             return if_cache_return["return"]
 
+    print("messages:",messages)
     response = await openai_async_client.chat.completions.create(
         model=MM_MODEL, messages=messages, **kwargs
     )
@@ -198,4 +211,3 @@ def get_mmllm_response(cur_prompt, system_content, img_base):
 
     response = completion.choices[0].message.content
     return response
-

@@ -3,7 +3,7 @@ import os
 import json
 from dataclasses import dataclass, field, asdict
 from datetime import datetime
-from base import logger
+from base import logger  # 修改为相对导入
 from parameter import cache_path
 if not os.path.exists(cache_path):
     os.makedirs(cache_path)
@@ -80,7 +80,7 @@ class MMGraphRAG:
 
         global_config_path = os.path.join(cache_path,"global_config.csv")
         # 将global_config字典保存到 CSV 文件
-        with open(global_config_path, 'w', newline='') as file:
+        with open(global_config_path, 'w', encoding='utf-8', newline='') as file:
             for key, value in global_config.items():
                 file.write(f"{key},{value}\n")
         
